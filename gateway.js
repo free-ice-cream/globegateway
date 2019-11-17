@@ -11,11 +11,15 @@ let dev4 = ax.device4();
 let dev5 = ax.device5();
 let dev6 = ax.device6();
 let dev7 = ax.device7();
-var thisGlobe;
+var thisGlobe = "";
+var counter = 0;
 
 console.log("axto =",accesstoken, "dev1 ", dev1 );
 
 http.createServer(function (req, res){
+  // console.log("req = ",req);
+  console.log("counter = ",counter);
+  counter +=1;
   res.writeHead(200, {'Content-Type': 'text/html'});
   var q = url.parse(req.url, true).query;
   var service = q.service;
@@ -23,7 +27,10 @@ http.createServer(function (req, res){
   thisGlobe = q.globe;
   res.write("<p>the service was: "+service+"</p><p>the user was: "+user+"</p> <p> the globe selected was: "+thisGlobe+"</p>");
   //if(globe == "bottle"){
-  postToParticle(thisGlobe);
+  if(thisGlobe!= "" || typeof thisGlobe!= "undefined" ){
+    postToParticle(thisGlobe);
+  }
+  // postToParticle(thisGlobe);
   console.log("globe selected was", thisGlobe);
   //}
   res.end();
@@ -35,7 +42,8 @@ var deviceID;
 
 postToParticle = function(g){
   console.log("g = ",g);
-  switch(g){
+  gl = String(g);
+  switch(gl){
     case "1":
       deviceID = dev1;
       break;
@@ -62,12 +70,7 @@ postToParticle = function(g){
       deviceID = "";
   }
 
-
-//let uri =devurl+deviceID+"?access_token="+accesstoken+"/";
-
-
 let hardCoded = "https://api.particle.io/v1/devices/"+deviceID+"/globe?access_token="+accesstoken;
-
 
 console.log("the uri is:", hardCoded);
   request.post({url:hardCoded, form: {value:'go'}}, function(err,httpResponse,body){
@@ -76,7 +79,7 @@ console.log("the uri is:", hardCoded);
       console.log("and we are talking to globe ", thisGlobe);
       console.log(body);
     }else{
-      console.log("gettig an error");
+      console.log("getting an error");
       console.log(err);
     }
   /* ... */
