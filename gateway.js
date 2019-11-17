@@ -2,15 +2,27 @@ var http = require ('http');
 var url = require ('url');
 const request = require('request');
 //
-const ax = require('./access.js');
-let accesstoken  = ax.axto();
-let dev1 = ax.device1();
-let dev2 = ax.device2();
-let dev3 = ax.device3();
-let dev4 = ax.device4();
-let dev5 = ax.device5();
-let dev6 = ax.device6();
-let dev7 = ax.device7();
+//const ax = require('./access.js');
+// let accesstoken  = ax.axto();
+// let dev1 = ax.device1();
+// let dev2 = ax.device2();
+// let dev3 = ax.device3();
+// let dev4 = ax.device4();
+// let dev5 = ax.device5();
+// let dev6 = ax.device6();
+// let dev7 = ax.device7();
+var accesstoken = process.env.PARTICLETOKEN;
+let dev1 = process.env.DEVICEONE;
+let dev2 = process.env.DEVICETWO;
+let dev3 = process.env.DEVICETHREE;
+let dev4 = process.env.DEVICEFOUR;
+let dev5 = process.env.DEVICEFIVE;
+let dev6 = process.env.DEVICESIX;
+let dev7 = process.env.DEVICESEVEN;
+
+
+
+
 var thisGlobe = "";
 var counter = 0;
 
