@@ -1,0 +1,27 @@
+{
+  "name": "gateway",
+  "version": "1.0.0",
+  "description": "a gateway script to connect various web services to a set of IoT devices",
+  "main": "gateway.js",
+  "dependencies": {
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node gateway.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/free-ice-cream/globegateway.git"
+  },
+  "author": "simon johnson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/free-ice-cream/globegateway/issues"
+  },
+  "homepage": "https://github.com/free-ice-cream/globegateway#readme",
+  "engines": {
+    "node": "11.6.0"
+  }
+}
