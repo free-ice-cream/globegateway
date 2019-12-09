@@ -140,22 +140,22 @@ console.log("the uri is:", hardCoded);
 //
 postToStrapi = function(twitterdump, globe_number, serviceUsed, message, user_handle, metadata){
   console.log("posttostrapi called");
-
-  axios.post(str_url, {
-    twitterdump: twitterdump,
-    globenumber: globe_number,
-    service: serviceUsed,
-    message: message,
-    user: user_handle,
-    metadata: metadata
-  })
-  .then((res) => {
-    console.log(`statusCode: ${res.statusCode}`)
-    console.log(res)
-  })
-  .catch((error) => {
-    console.error(error)
-  })
+console.log("call currenly empty");
+  // axios.post(str_url, {
+  //   twitterdump: twitterdump,
+  //   globenumber: globe_number,
+  //   service: serviceUsed,
+  //   message: message,
+  //   user: user_handle,
+  //   metadata: metadata
+  // })
+  // .then((res) => {
+  //   console.log(`statusCode: ${res.statusCode}`)
+  //   console.log(res)
+  // })
+  // .catch((error) => {
+  //   console.error(error)
+  // })
 
 
 
