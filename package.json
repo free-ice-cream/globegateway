@@ -4,6 +4,7 @@
   "description": "a gateway script to connect various web services to a set of IoT devices",
   "main": "gateway.js",
   "dependencies": {
+    "axios": "^0.19.0",
     "request": "^2.88.0"
   },
   "devDependencies": {},
