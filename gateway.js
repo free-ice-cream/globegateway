@@ -20,6 +20,8 @@ let dev6 = ax.device6();
 let dev7 = ax.device7();
 let dev8 = ax.device8();
 //
+let deviceFunction = ax.deviceFunction();//
+//
 var htmlPage = ""
 
 
@@ -73,6 +75,8 @@ try{
       if(thisGlobe!= "" || typeof thisGlobe!= "undefined" ){
         postToParticle(thisGlobe);
         postToStrapi({json:'holder'},thisGlobe, service, "message holder", user, "metadata holder" );
+
+        writeToFile(thisGlobe, service );
       }
       // postToParticle(thisGlobe);
       console.log("globe selected was", thisGlobe);
@@ -121,7 +125,7 @@ postToParticle = function(g){
       deviceID = "";
   }
 
-let hardCoded = "https://api.particle.io/v1/devices/"+deviceID+"/globe?access_token="+accesstoken;
+let hardCoded = "https://api.particle.io/v1/devices/"+deviceID+"/"+deviceFunction+"?access_token="+accesstoken;
 
 console.log("the uri is:", hardCoded);
   request.post({url:hardCoded, form: {value:'go'}}, function(err,httpResponse,body){
@@ -138,9 +142,28 @@ console.log("the uri is:", hardCoded);
 }
 
 //
+//
+writeToFile = function( globe_number, serviceUsed){
+  // add a line to a lyric file, using appendFile
+
+  try {
+    let time = Date.now();
+    let dd = new Date();
+    let d = dd.getUTCDate();
+    fs.appendFile('globeLogs.txt', '\n Globe :'+globe_number+', callTime UTC: '+dd+' service: '+serviceUsed, (err) => {
+      if (err) throw err;
+      console.log('globelogs updated!');
+  });
+  } catch (e) {
+    fs.appendFile('errorlogs.txt','\n UTC:'+dd+' e: '+e);
+  }
+
+}
+
+
 postToStrapi = function(twitterdump, globe_number, serviceUsed, message, user_handle, metadata){
   console.log("posttostrapi called");
-console.log("call currenly empty");
+  console.log("call currenly empty");
   // axios.post(str_url, {
   //   twitterdump: twitterdump,
   //   globenumber: globe_number,
